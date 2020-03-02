@@ -10,3 +10,6 @@
 [submodule "st"]
 	path = st
 	url = https://git.suckless.org/st
+[submodule "feh"]
+	path = feh
+	url = https://git.finalrewind.org/feh
