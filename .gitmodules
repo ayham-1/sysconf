@@ -13,6 +13,3 @@
 [submodule "feh"]
 	path = feh
 	url = https://git.finalrewind.org/feh
-[submodule "dwmstatus"]
-	path = dwmstatus
-	url = git://git.suckless.org/dwmstatus
