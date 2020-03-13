@@ -1,0 +1,15 @@
+[submodule "surf"]
+	path = surf
+	url = https://github.com/realaltffour/surf.git
+[submodule "st"]
+	path = st
+	url = https://github.com/realaltffour/st.git
+[submodule "feh"]
+	path = feh
+	url = https://github.com/realaltffour/feh.git
+[submodule "dwm"]
+	path = dwm
+	url = https://github.com/realaltffour/dwm.git
+[submodule "dmenu"]
+	path = dmenu
+	url = https://github.com/realaltffour/dmenu.git
