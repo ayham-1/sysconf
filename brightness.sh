@@ -1,14 +1,34 @@
 #!/bin/bash
 set -e
-file="/sys/class/backlight/intel_backlight/brightness"
-current=$(cat "$file")
+current=$(cat "/sys/class/backlight/intel_backlight/brightness")
+max=$(cat "/sys/class/backlight/intel_backlight/max_brightness")
+
+currentPercentage="$(bc <<< "scale=2; $current / $max")" 
+currentPercentage=$(echo "$currentPercentage*100" | bc)
 new="$current"
-if [ "$1" = "-inc" ]
-then
+newPercentage="$currentPercentage"
+
+if [ "$1" = "-pinc" ]; then
+	newPercentage=$(echo "$currentPercentage+$2" | bc)
+	new=$(echo "scale=2; $max * ($newPercentage / 100)" | bc)
+	currentPercentage=$newPercentage
+elif [ "$1" = "-pdec" ]; then
+	newPercentage=$(echo "$currentPercentage-$2" | bc)
+	new=$(echo "scale=2; $max * ($newPercentage / 100)" | bc)
+	currentPercentage=$newPercentage
+elif [ "$1" = "-inc" ]; then
     new=$(( current + $2 ))
-fi
-if [ "$1" = "-dec" ]
-then
+elif [ "$1" = "-dec" ]; then
     new=$(( current - $2 ))
 fi
-echo "$new" | tee "$file"
+
+if [ "${new%.*}" -lt "0" ]; then
+	echo "100" | tee "/sys/class/backlight/intel_backlight/brightness"
+	echo "1%"
+elif [ "${new%.*}" -le "$max" ]; then
+	echo "${new%.*}" | tee "/sys/class/backlight/intel_backlight/brightness"
+	echo "${currentPercentage}%"
+elif [ "${new%.*}" -gt "$max" ]; then
+	echo "${max}" | tee "/sys/class/backlight/intel_backlight/brightness"
+	echo "100%"
+fi
