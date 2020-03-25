@@ -13,3 +13,6 @@
 [submodule "dmenu"]
 	path = dmenu
 	url = https://github.com/realaltffour/dmenu.git
+[submodule "slock"]
+	path = slock
+	url = git@github.com:realaltffour/slock.git
