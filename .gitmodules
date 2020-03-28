@@ -4,9 +4,6 @@
 [submodule "st"]
 	path = st
 	url = https://github.com/realaltffour/st.git
-[submodule "feh"]
-	path = feh
-	url = https://github.com/realaltffour/feh.git
 [submodule "dwm"]
 	path = dwm
 	url = https://github.com/realaltffour/dwm.git
