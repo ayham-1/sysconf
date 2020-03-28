@@ -13,3 +13,6 @@
 [submodule "slock"]
 	path = slock
 	url = https://github.com/realaltffour/slock.git 
+[submodule "dotfiles"]
+	path = dotfiles
+	url = https://github.com/realaltffour/dotfiles.git
