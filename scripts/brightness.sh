@@ -1,4 +1,11 @@
 #!/bin/bash
+# This script is used to control brightness.
+# Example:
+#     brightness.sh -pinc 10 # Increases brightness by a percentage.
+#     brightness.sh -inc 10  # Increases brightness by a value in native units.
+#     brightness.sh -pdec 10 # Decreases brightness by a percentage.
+#     brightness.sh -dec 10  # Decreases brightness by a value in native units.
+
 set -e
 current=$(cat "/sys/class/backlight/intel_backlight/brightness")
 max=$(cat "/sys/class/backlight/intel_backlight/max_brightness")

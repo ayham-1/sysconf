@@ -1,4 +1,7 @@
 #!/bin/bash
+# This script is used for the systray on dwm.
+# Example:
+#    (DE start command) & statusbar.sh
 
 SEPERATOR=" | "
 STATUS=""

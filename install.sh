@@ -1,12 +1,9 @@
 #!/bin/bash
 
-destdir="$1"
-echo "Installing in to: $1"
-export DESTDIR=$(destdir)
-
 function install() {
 	cd "$1"
 	make -j5 clean install
+	make clean
 	cd ..
 }
 
