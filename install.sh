@@ -7,9 +7,18 @@ function install() {
 	cd ..
 }
 
+function install_config() {
+	rsync -a dotfiles/$1/ $HOME/
+}
+
 # Install dmenu
 install "dmenu"
 install "dwm"
 install "slock"
 install "st"
-install "surf"
+
+# Install configuration files.
+install_config "emacs"
+install_config "git"
+install_config "tmux"
+install_config "neovim"
