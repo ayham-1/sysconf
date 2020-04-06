@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# XDG Envirtonment variables
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# ~/ Clean-up
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CONAN_USER_HOME="$XDG_CACHE_HOME"/conan
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export WGETRC="$XDG_CONFIG_HOME"/wgetrc
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export GIMP2_CACHEDIR="$XDG_CACHE_HOME"/gimp
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export PULSE_COOKIE="$XDG_CONFIG_HOME"/pulse/cookie
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash_completion
+export HISTFILE="$XDG_CONFIG_HOME"/bash/history
+
+# ~/ Alias Clean-ups
+alias tmux="tmux -f "$XDG_CONFIG_HOME"/tmux.conf"
