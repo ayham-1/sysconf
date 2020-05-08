@@ -7,7 +7,7 @@ SEPERATOR=" | "
 STATUS=""
 
 function getDate() {
-	date="$(date +"%D %T" -d "+3 hours")"
+	date="$(date +"%D %T")"
 }
 
 function getBattery() {
@@ -37,7 +37,8 @@ function getWIFI() {
 }
 
 function getBrightness() {
-	brightness=$(brightness.sh | sed '2,2!d' )
+	brightness=$(xbacklight)
+	brightness=${brightness%.*}
 }
 
 function getVolume() {
@@ -52,7 +53,7 @@ while true; do
 	getBrightness
 	getVolume
 	
-	STATUS="${date}${SEPERATOR}${battery}${SEPERATOR}${brightness}${SEPERATOR}${volume}%${SEPERATOR}${wifi}"
+	STATUS="${date}${SEPERATOR}${battery}${SEPERATOR}${brightness}%${SEPERATOR}${volume}%${SEPERATOR}${wifi}"
 	xsetroot -name "$STATUS"
 	sleep 1s
 done
