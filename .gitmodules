@@ -1,15 +1,3 @@
-[submodule "st"]
-	path = st
-	url = https://github.com/realaltffour/st.git
-[submodule "dwm"]
-	path = dwm
-	url = https://github.com/realaltffour/dwm.git
-[submodule "dmenu"]
-	path = dmenu
-	url = https://github.com/realaltffour/dmenu.git
-[submodule "slock"]
-	path = slock
-	url = https://github.com/realaltffour/slock.git 
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/realaltffour/dotfiles.git
