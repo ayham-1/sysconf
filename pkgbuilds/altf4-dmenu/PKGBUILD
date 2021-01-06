@@ -1,0 +1,29 @@
+# Maintainer: altffour <altffour@protonmail.com>
+
+pkgname=altf4-dmenu
+pkgver=5.0
+pkgrel=1
+pkgdesc="altffour's dmenu build"
+url="https://github.com/realaltffour/dmenu"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('libxinerama' 'libxft')
+source=(https://github.com/realaltffour/dmenu/archive/myBuild.zip)
+sha256sums=('SKIP')
+
+prepare() {
+  unzip myBuild.zip
+}
+
+build(){
+  cd "dmenu-myBuild"
+  make \
+    X11INC=/usr/include/X11 \
+    X11LIB=/usr/lib/X11
+  }
+
+package() {
+  cd "dmenu-myBuild"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

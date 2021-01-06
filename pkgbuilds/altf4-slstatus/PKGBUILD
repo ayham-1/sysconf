@@ -1,0 +1,28 @@
+# Maintainer: altffour <altffour@protonmail.com>
+
+pkgname=altf4-slstatus
+pkgver=1.0
+pkgrel=1
+url="https://github.com/realaltffour/slstatus"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('libx11')
+source=(https://github.com/realaltffour/slstatus/archive/myBuild.zip)
+sha256sums=('SKIP')
+
+prepare() {
+  unzip myBuild.zip
+}
+
+build(){
+  cd "slstatus-myBuild"
+  make \
+    X11INC=/usr/include/X11 \
+    X11LIB=/usr/lib/X11
+  }
+
+package() {
+  cd "slstatus-myBuild"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

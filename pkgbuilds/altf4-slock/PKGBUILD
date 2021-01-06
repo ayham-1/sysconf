@@ -1,0 +1,29 @@
+# Maintainer: altffour <altffour@protonmail.com>
+
+pkgname=altf4-slock
+pkgver=1.4
+pkgrel=1
+pkgdesc="altffour's slock build"
+url="https://github.com/realaltffour/slock"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('libxrandr')
+source=(https://github.com/realaltffour/slock/archive/myBuild.zip)
+sha256sums=('SKIP')
+
+prepare() {
+  unzip myBuild.zip
+}
+
+build(){
+  cd "slock-myBuild"
+  make \
+    X11INC=/usr/include/X11 \
+    X11LIB=/usr/lib/X11
+  }
+
+package() {
+  cd "slock-myBuild"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

@@ -1,0 +1,31 @@
+# $Id$
+# Maintainer: altffour <altffour@protonmail.com>
+
+pkgname=altf4-dwm
+pkgver=6.2
+pkgrel=1
+pkgdesc="altffour's dwm build"
+url="https://github.com/realaltffour/dwm"
+arch=('i686' 'x86_64')
+license=('MIT')
+options=(zipman)
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'flameshot')
+optdepends=('altf4-dmenu' 'altff4-slstatus' 'altff4-slock')
+source=(https://github.com/realaltffour/dwm/archive/myBuild.zip)
+sha256sums=('SKIP')
+
+prepare() {
+  unzip myBuild.zip
+}
+
+build() {
+  cd "dwm-myBuild"
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+}
+
+package() {
+  cd "dwm-myBuild"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+}

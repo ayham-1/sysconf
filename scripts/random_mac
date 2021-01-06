@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+depend() {
+	before net.wlan0 wpa_supplicant
+}
+
+command="/usr/bin/macchanger"
+command_args="-r wlan0"
